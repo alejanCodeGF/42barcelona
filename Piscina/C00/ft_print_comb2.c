@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 16:37:58 by alegomez          #+#    #+#             */
-/*   Updated: 2023/01/26 18:12:08 by alegomez         ###   ########.fr       */
+/*   Created: 2023/01/26 17:21:57 by alegomez          #+#    #+#             */
+/*   Updated: 2023/01/26 17:37:03 by alegomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_printf(const char* argumento, ...)
+void	ft_print_comb2(void)
 {
 
+}
+
+int	main(void)
+{
+	ft_print_comb2();
 }
