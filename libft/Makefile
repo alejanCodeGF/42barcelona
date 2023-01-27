@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/01 19:36:50 by alegomez          #+#    #+#              #
-#    Updated: 2023/01/26 17:57:12 by alegomez         ###   ########.fr        #
+#    Created: 2023/01/27 12:30:20 by alegomez          #+#    #+#              #
+#    Updated: 2023/01/27 12:30:20 by alegomez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 SRCS = ft_isalnum.c	ft_memchr.c	ft_strdup.c ft_strnstr.c \
 	ft_isalpha.c ft_memcmp.c ft_strlcat.c ft_strrchr.c \

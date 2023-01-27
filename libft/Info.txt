@@ -1,0 +1,46 @@
+Aqui irá información basica del trabajo que conviene saberse:
+
+#include <unistd.h> == write()
+#include <stdio.h> == printf()
+#include <string.h> == memcpy(), memmove(), memchr()
+#include <stdlib.h> == malloc(), free()
+
+libft.h:
+|#ifndef LIBFT_H| == comprueba si LIBFT_H ya ha sido definido, |#define LIBFT_H| == (si el ifndef detecta que no ha sido definido) define la libreria "LIBFT_H"
+--> es un mecanismo de preprocesamiento que se utiliza para evitar la inclusión múltiple de la misma cabecera en un archivo
+--> si no pones los dos, cuando lo llames 1)varias veces en un fichero, 2)en varios ficheros, dará error
+|int ft_...| == funciones de la libreria
+|#endif| == indica al compilador que ha terminado la sección de codigo protegida (para que pueda continuar sin que haya errores)
+(Se pone en mayuscula las constantes por simple nomenclatura, para que se vean mejor, también se hace en el Makefile)
+
+Makefile:
+|SRCS == sources|, las funciones en .c que se usen
+|OBJS = $(SRCS:.c=.o)| == Cambia las sources de .c a .o (objeto, temporales)
+Objeto (.o) == tipo de archivo de salida producido por un compilador (es código de máquina que puede ser ejecutado por la computadora), los archivos .o se utilizan como entrada para un vinculador, que los combina con otros archivos .o y bibliotecas para crear un archivo ejecutable final.
+Permite la compilación y vinculación separadas (osea, se puede compilar de manera independiente de los demás, ahorra tiempo y hace mas facil depurar y mantener proyectos grandes (Si el archivo no cambia, no se recompila))
+|CFLAGS = -Wall -Werror -Wextra| == las flags al ejecutar
+|NAME = libft.a| == nombre de la libreria estatica
+(libreria estatica == colección de .o, combinados en un solo archivo (para hacer el #include "libft.a" y usar la libreria vaya))
+|HEADER = libft.h| #################################################################################################### no me acuerdo de que hacia esta regla la verdat
+|%.o : %.c	$(HEADER)|
+	|gcc $(CFLAGS) -c  $< -o $@| == compilar archivos .o a partir de archivos .c utilizando GCC, y utiliza comodines y variables especiales para especificar los archivos de entrada (.c asociada a un .o) y salida (.o)
+|all: $(NAME)| == cuando se ejecuta el "make", ejecuta el "NAME" (siguiente linea)
+|$(NAME): $(OBJS) $(HEADER)| == NAME depende de OBJS y HEADER
+	|ar rcs $(NAME) $(OBJS)| == ar, se usa para crear/modificar una libreria estatica, rcs para añadir archivos, NAME nombre de la libreria, OBJS los archivos .o que se añadirán
+|clean:|
+	|rm -f $(OBJS)| == cuando se escribe "make clean", elimina (rm) todos los archivos tipo objeto (-f para forzar a que se elimine, sin confirmación)
+|fclean: clean| == hace clean si es necesario
+	|rm -f $(NAME)| == cuando se escribe "make fclean", elimina la libreria estatica
+|re: fclean $(NAME)| == "resetea" todo, hace un fclean y vuelve a ejecutar el "NAME"
+|.PHONY: all clean fclean re| == para declarar cuales son comandos para ejecutar y no archivos reales
+--> asegura que estos objetivos siempre ejecutarán los comandos asociados, incluso si hay archivos con el mismo nombre en el sistema de archivos.
+
+
+ft_isalpha: return == 1 si input es una letra ('A'-'Z', 'a'-'z'), return == 0 si no es una letra
+ft_isdigit: return == 1 si input es un numero ('0'-'9'), return == 0 si no es un numero
+ft_isalnum: return == 1 si input es una letra ('A'-'Z', 'a'-'z') o un numero ('0'-'9'), return == 0 si no es ninguna
+ft_isascii: return == 1 si input es un caracter ascii (0 - 127), return == 0 si no es ninguno
+ft_isprint: return == 1 si input es un caracter printeable (' '(32) - '~'(126)), return == 0 si no es lo es
+ft_toupper: return == (char*) cambiando ('a'-'z') por ('A'-'Z')
+ft_tolower: return == (char*) cambiando ('A'-'Z') por ('a'-'z')
+ft_strlen: return == numero de caracteres del input (const char*)
