@@ -4,8 +4,11 @@ Aqui irá información basica del trabajo que conviene saberse:
 #include <stdio.h> == printf()
 #include <string.h> == memcpy(), memmove(), memchr()
 #include <stdlib.h> == malloc(), free()
+#include <stddef.h> == size_t
 
 libft.h:
+|# include <stdlib.h>|
+|# include <unistd.h>| == Para los usuarios de la biblioteca saber qué encabezados deben incluir en sus propios programas (eso dice chatgpt, igualmemte es obligatorio ponerlo en las funciones no se olvide)
 |#ifndef LIBFT_H| == comprueba si LIBFT_H ya ha sido definido, |#define LIBFT_H| == (si el ifndef detecta que no ha sido definido) define la libreria "LIBFT_H"
 --> es un mecanismo de preprocesamiento que se utiliza para evitar la inclusión múltiple de la misma cabecera en un archivo
 --> si no pones los dos, cuando lo llames 1)varias veces en un fichero, 2)en varios ficheros, dará error
@@ -16,8 +19,9 @@ libft.h:
 Makefile:
 |SRCS == sources|, las funciones en .c que se usen
 |OBJS = $(SRCS:.c=.o)| == Cambia las sources de .c a .o (objeto, temporales)
-Objeto (.o) == tipo de archivo de salida producido por un compilador (es código de máquina que puede ser ejecutado por la computadora), los archivos .o se utilizan como entrada para un vinculador, que los combina con otros archivos .o y bibliotecas para crear un archivo ejecutable final.
-Permite la compilación y vinculación separadas (osea, se puede compilar de manera independiente de los demás, ahorra tiempo y hace mas facil depurar y mantener proyectos grandes (Si el archivo no cambia, no se recompila))
+Objeto (.o) == tipo de archivo de salida producido por un compilador (es código de máquina que puede ser ejecutado por la computadora)
+--> Los archivos .o se utilizan como entrada para un vinculador, que los combina con otros archivos .o y bibliotecas para crear un archivo ejecutable final.
+--> Permite la compilación y vinculación separadas (osea, se puede compilar de manera independiente de los demás, ahorra tiempo y hace mas facil depurar y mantener proyectos grandes (Si el archivo no cambia, no se recompila))
 |CFLAGS = -Wall -Werror -Wextra| == las flags al ejecutar
 |NAME = libft.a| == nombre de la libreria estatica
 (libreria estatica == colección de .o, combinados en un solo archivo (para hacer el #include "libft.a" y usar la libreria vaya))
@@ -35,12 +39,42 @@ Permite la compilación y vinculación separadas (osea, se puede compilar de man
 |.PHONY: all clean fclean re| == para declarar cuales son comandos para ejecutar y no archivos reales
 --> asegura que estos objetivos siempre ejecutarán los comandos asociados, incluso si hay archivos con el mismo nombre en el sistema de archivos.
 
-
+-funciones comunes
 ft_isalpha: return == 1 si input es una letra ('A'-'Z', 'a'-'z'), return == 0 si no es una letra
 ft_isdigit: return == 1 si input es un numero ('0'-'9'), return == 0 si no es un numero
 ft_isalnum: return == 1 si input es una letra ('A'-'Z', 'a'-'z') o un numero ('0'-'9'), return == 0 si no es ninguna
 ft_isascii: return == 1 si input es un caracter ascii (0 - 127), return == 0 si no es ninguno
 ft_isprint: return == 1 si input es un caracter printeable (' '(32) - '~'(126)), return == 0 si no es lo es
-ft_toupper: return == (char*) cambiando ('a'-'z') por ('A'-'Z')
-ft_tolower: return == (char*) cambiando ('A'-'Z') por ('a'-'z')
+ft_toupper: return == (int) cambiando ('a'-'z') por ('A'-'Z') (input = 1 sola letra)
+ft_tolower: return == (int) cambiando ('A'-'Z') por ('a'-'z') (input = 1 sola letra)
 ft_strlen: return == numero de caracteres del input (const char*)
+ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas
+ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null)
+ft_memcpy: copia (n) bytes de una región de memoria (const void*) a otra (void*) (puede superponer)
+ft_memmove: copia (n) bytes de una región de memoria (const void*) a otra (void*) (NO SUPERPONE)
+ft_strlcpy: copia (n) caracteres de una región de memoria (const char*) a otra (char*), poniendo /0 al ultimo espacio posible. Return == tamaño de la cadena de origen, o 0 si ha dado error
+ft_strlcat: exactamente igual a strlcpy, pero cambia el return: Return == (lendst + lensrc) si escribe completamente src, o Return == (n + lensrc) si no escribe completamente src (src se suma siempre)
+ft_strnstr: busca subcadena dentro de otra cadena (solo considerando (len) caracteres de la cadena principal). Return == 0 si no encuentra subcadena, Return == puntero desde la primera posicion de la subcadena
+ft_strchr: busca el primer (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+ft_strrchr: busca el ultimo (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+ft_strncmp: compara n caracteres de dos (const char*) (si no antes encuentra una diferencia de caracter) (n < num max de cadena pequeña, o error)
+-->Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2
+ft_memchr: busca el primer (int c), del (const void*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+ft_memcmp: compara caracteres de dos (const void*) hasta encontrar /0 o una diferencia. Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2
+ft_atoi: transforma un (char*) a un (int). Solo si esta escrito de la forma "(1 solo signo (si es + no hace falta))(numero entero)" (p.e: 123456 correcto, -12g24123 --> return (-12), -f1234 --> return (0))
+
+-con control memoria (malloc)
+ft_calloc: reserva (tipobyte*numeroelementos) de memoria (malloc) y pone los valores a 0. Return == 0 si da error, o Return == puntero
+ft_strdup: crear una copia de una cadena input (const char*), reservando memoria. Return == 0 si da error, o Return == puntero
+
+-funciones tochas
+ft_substr: 
+ft_strjoin: 
+ft_strtrim: 
+ft_split: 
+ft_itoa: 
+ft_striteri: 
+ft_putchar_fd: 
+ft_putstr_fd: 
+ft_putendl_fd: 
+ft_putnbr_fd: 
