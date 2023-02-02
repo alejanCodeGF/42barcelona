@@ -6,12 +6,12 @@
 /*   By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:30:31 by alegomez          #+#    #+#             */
-/*   Updated: 2023/01/27 12:30:31 by alegomez         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:32:33 by alegomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
+# define LIBFT_H
 
 # include <stdlib.h>
 # include <unistd.h>
