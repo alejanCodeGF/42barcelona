@@ -14,31 +14,35 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+#define BUFFER_SIZE 42
+
 char	*get_next_line(int fd)
 {
-	static void*	chartxt;
-	int	i;
+	static char	*buffer[BUFFER_SIZE];
+	static int	pos = 0;
+	static int	inicio = 0;
+	char*		strlinea;
 
-	i = 0;
-	/*
-	if(!fd)
-		return (0);
-	*/
-	read(fd, chartxt, 100);
-
-	printf("%s", (char*)chartxt);
-/*
-	while()
+	while (read(fd, &c, 1) > 0)
 	{
-		printf("%d", texto);
-		texto++;
+		pos++;
+		if(c == '\n')
+			break;
 	}
-*/
-	return ("ey");
+	#Malloc de tamaño pos-i
+	#Recorres dando la letra en el str desde inicio hasta pos-1
+	#Das en pos '\0'
+	return (strlinea);
 }
 
 int	main(void)
 {
-	int fd = open("../letra.txt", O_RDWR);
-	get_next_line(fd);
+	int fd = open("../texto.txt", O_RDWR);
+	while (1)
+	{
+		a = get_next_line(fd);
+		if a == 0
+			break;
+		printf("%s", a);
+	}
 }

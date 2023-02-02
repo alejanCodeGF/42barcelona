@@ -1,10 +1,13 @@
 Aqui irá información basica del trabajo que conviene saberse:
 
-#include <unistd.h> == write()
+#include <unistd.h> == write(), read()
 #include <stdio.h> == printf()
 #include <string.h> == memcpy(), memmove(), memchr()
 #include <stdlib.h> == malloc(), free()
 #include <stddef.h> == size_t
+
+https://www.chuidiang.org/clinux/herramientas/librerias.php Aqui explica la diferencia entre librerias estaticas (.a) y dinamicas
+https://www.chuidiang.org/clinux/herramientas/makefile.php Conceptos básicos de make y los Makefile
 
 libft.h:
 |# include <stdlib.h>|
@@ -24,7 +27,7 @@ Objeto (.o) == tipo de archivo de salida producido por un compilador (es código
 --> Permite la compilación y vinculación separadas (osea, se puede compilar de manera independiente de los demás, ahorra tiempo y hace mas facil depurar y mantener proyectos grandes (Si el archivo no cambia, no se recompila))
 |CFLAGS = -Wall -Werror -Wextra| == las flags al ejecutar
 |NAME = libft.a| == nombre de la libreria estatica
-(libreria estatica == colección de .o, combinados en un solo archivo (para hacer el #include "libft.a" y usar la libreria vaya))
+(libreria estatica == ejecutable de colección de .o, combinados en un solo archivo (para hacer el #include "libft.a" y usar la libreria vaya))
 |HEADER = libft.h| #################################################################################################### no me acuerdo de que hacia esta regla la verdat
 |%.o : %.c	$(HEADER)|
 	|gcc $(CFLAGS) -c  $< -o $@| == compilar archivos .o a partir de archivos .c utilizando GCC, y utiliza comodines y variables especiales para especificar los archivos de entrada (.c asociada a un .o) y salida (.o)
@@ -35,21 +38,21 @@ Objeto (.o) == tipo de archivo de salida producido por un compilador (es código
 	|rm -f $(OBJS)| == cuando se escribe "make clean", elimina (rm) todos los archivos tipo objeto (-f para forzar a que se elimine, sin confirmación)
 |fclean: clean| == hace clean si es necesario
 	|rm -f $(NAME)| == cuando se escribe "make fclean", elimina la libreria estatica
-|re: fclean $(NAME)| == "resetea" todo, hace un fclean y vuelve a ejecutar el "NAME"
+|re: fclean $(NAME)| == "resetea" todo: hace un fclean y vuelve a ejecutar el "NAME"
 |.PHONY: all clean fclean re| == para declarar cuales son comandos para ejecutar y no archivos reales
 --> asegura que estos objetivos siempre ejecutarán los comandos asociados, incluso si hay archivos con el mismo nombre en el sistema de archivos.
 
 -funciones comunes
-ft_isalpha: return == 1 si input es una letra ('A'-'Z', 'a'-'z'), return == 0 si no es una letra
-ft_isdigit: return == 1 si input es un numero ('0'-'9'), return == 0 si no es un numero
-ft_isalnum: return == 1 si input es una letra ('A'-'Z', 'a'-'z') o un numero ('0'-'9'), return == 0 si no es ninguna
-ft_isascii: return == 1 si input es un caracter ascii (0 - 127), return == 0 si no es ninguno
-ft_isprint: return == 1 si input es un caracter printeable (' '(32) - '~'(126)), return == 0 si no es lo es
-ft_toupper: return == (int) cambiando ('a'-'z') por ('A'-'Z') (input = 1 sola letra)
-ft_tolower: return == (int) cambiando ('A'-'Z') por ('a'-'z') (input = 1 sola letra)
-ft_strlen: return == numero de caracteres del input (const char*)
-ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas
-ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null)
+·ft_isalpha: return == 1 si input es una letra ('A'-'Z', 'a'-'z'), return == 0 si no es una letra
+·ft_isdigit: return == 1 si input es un numero ('0'-'9'), return == 0 si no es un numero
+·ft_isalnum: return == 1 si input es una letra ('A'-'Z', 'a'-'z') o un numero ('0'-'9'), return == 0 si no es ninguna
+·ft_isascii: return == 1 si input es un caracter ascii (0 - 127), return == 0 si no es ninguno
+·ft_isprint: return == 1 si input es un caracter printeable (' '(32) - '~'(126)), return == 0 si no es lo es
+·ft_toupper: return == (int) cambiando ('a'-'z') por ('A'-'Z') (input = 1 sola letra)
+·ft_tolower: return == (int) cambiando ('A'-'Z') por ('a'-'z') (input = 1 sola letra)
+·ft_strlen: return == numero de caracteres del input (const char*)
+·ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas
+·ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null)
 ft_memcpy: copia (n) bytes de una región de memoria (const void*) a otra (void*) (puede superponer)
 ft_memmove: copia (n) bytes de una región de memoria (const void*) a otra (void*) (NO SUPERPONE)
 ft_strlcpy: copia (n) caracteres de una región de memoria (const char*) a otra (char*), poniendo /0 al ultimo espacio posible. Return == tamaño de la cadena de origen, o 0 si ha dado error

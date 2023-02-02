@@ -27,4 +27,4 @@ void    ft_bzero(void *s, size_t n)
     return (s);
 }
 
-/*lo mismo que memset*/
+/*lo mismo que memset, pero con int c a asignar = 0*/
