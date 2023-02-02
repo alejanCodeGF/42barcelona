@@ -6,7 +6,7 @@
 /*   By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:56:53 by alegomez          #+#    #+#             */
-/*   Updated: 2023/01/28 14:56:53 by alegomez         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:58:23 by alegomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void    *ft_memset(void *b, int c, size_t len)
         ptr[i] = (unsigned int)c;
         i++;
     }
-    return (b);
 }
 
 /* hago esto, porque size_t no puede ser negativo (no puedo hacer while (len-- > 0), llegaria a len == -1)

@@ -51,8 +51,8 @@ Objeto (.o) == tipo de archivo de salida producido por un compilador (es código
 ·ft_toupper: return == (int) cambiando ('a'-'z') por ('A'-'Z') (input = 1 sola letra)
 ·ft_tolower: return == (int) cambiando ('A'-'Z') por ('a'-'z') (input = 1 sola letra)
 ·ft_strlen: return == numero de caracteres del input (const char*)
-·ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas
-·ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null)
+·ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas (no hace return)
+·ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null) (no hace return)
 ft_memcpy: copia (n) bytes de una región de memoria (const void*) a otra (void*) (puede superponer)
 ft_memmove: copia (n) bytes de una región de memoria (const void*) a otra (void*) (NO SUPERPONE)
 ft_strlcpy: copia (n) caracteres de una región de memoria (const char*) a otra (char*), poniendo /0 al ultimo espacio posible. Return == tamaño de la cadena de origen, o 0 si ha dado error
@@ -71,13 +71,13 @@ ft_calloc: reserva (tipobyte*numeroelementos) de memoria (malloc) y pone los val
 ft_strdup: crear una copia de una cadena input (const char*), reservando memoria. Return == 0 si da error, o Return == puntero
 
 -funciones tochas
-ft_substr: 
-ft_strjoin: 
-ft_strtrim: 
-ft_split: 
-ft_itoa: 
-ft_striteri: 
-ft_putchar_fd: 
-ft_putstr_fd: 
-ft_putendl_fd: 
-ft_putnbr_fd: 
+ft_substr:
+ft_strjoin:
+ft_strtrim:
+ft_split:
+ft_itoa:
+ft_striteri:
+ft_putchar_fd:
+ft_putstr_fd:
+ft_putendl_fd:
+ft_putnbr_fd:

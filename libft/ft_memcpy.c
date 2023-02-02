@@ -6,7 +6,10 @@
 /*   By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:56:49 by alegomez          #+#    #+#             */
-/*   Updated: 2023/01/28 14:56:49 by alegomez         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:07:46 by alegomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+void	*ft_memcpy(const void*	ptr)
+{
+}
