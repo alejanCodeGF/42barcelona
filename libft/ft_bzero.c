@@ -6,7 +6,7 @@
 /*   By: alegomez <alegomez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:56:50 by alegomez          #+#    #+#             */
-/*   Updated: 2023/01/28 14:56:50 by alegomez         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:58:10 by alegomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void    ft_bzero(void *s, size_t n)
         ptr[i] = 0;
         i++;
     }
-    return (s);
 }
 
 /*lo mismo que memset, pero con int c a asignar = 0*/
