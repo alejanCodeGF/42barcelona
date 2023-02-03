@@ -42,6 +42,9 @@ Objeto (.o) == tipo de archivo de salida producido por un compilador (es código
 |.PHONY: all clean fclean re| == para declarar cuales son comandos para ejecutar y no archivos reales
 --> asegura que estos objetivos siempre ejecutarán los comandos asociados, incluso si hay archivos con el mismo nombre en el sistema de archivos.
 
+Funciones:
+[constructores ordenados en el libft.h]
+
 -funciones comunes
 ·ft_isalpha: return == 1 si input es una letra ('A'-'Z', 'a'-'z'), return == 0 si no es una letra
 ·ft_isdigit: return == 1 si input es un numero ('0'-'9'), return == 0 si no es un numero
@@ -60,9 +63,9 @@ ft_strlcat: exactamente igual a strlcpy, pero cambia el return: Return == (lends
 ft_strnstr: busca subcadena dentro de otra cadena (solo considerando (len) caracteres de la cadena principal). Return == 0 si no encuentra subcadena, Return == puntero desde la primera posicion de la subcadena
 ft_strchr: busca el primer (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
 ft_strrchr: busca el ultimo (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+ft_memchr: busca el primer (int c), del (const void*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
 ft_strncmp: compara n caracteres de dos (const char*) (si no antes encuentra una diferencia de caracter) (n < num max de cadena pequeña, o error)
 -->Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2
-ft_memchr: busca el primer (int c), del (const void*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
 ft_memcmp: compara caracteres de dos (const void*) hasta encontrar /0 o una diferencia. Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2
 ft_atoi: transforma un (char*) a un (int). Solo si esta escrito de la forma "(1 solo signo (si es + no hace falta))(numero entero)" (p.e: 123456 correcto, -12g24123 --> return (-12), -f1234 --> return (0))
 
@@ -76,6 +79,7 @@ ft_strjoin:
 ft_strtrim: 
 ft_split: 
 ft_itoa: 
+ft_strmapi: 
 ft_striteri: 
 ft_putchar_fd: 
 ft_putstr_fd: 
