@@ -56,14 +56,14 @@ Funciones:
 ·ft_strlen: return == numero de caracteres del input (const char*)
 ·ft_memset: rellena (n) bytes de una región de memoria (void*) con el int c que deseas
 ·ft_bzero: rellena (n) bytes de una región de memoria (void*) con cero (Null)
-ft_memcpy: copia (n) bytes de una región de memoria (const void*) a otra (void*) (puede superponer)
-ft_memmove: copia (n) bytes de una región de memoria (const void*) a otra (void*) (NO SUPERPONE)
-ft_strlcpy: copia (n) caracteres de una región de memoria (const char*) a otra (char*), poniendo /0 al ultimo espacio posible. Return == tamaño de la cadena de origen, o 0 si ha dado error
+·ft_memcpy: copia (n) bytes de una región de memoria (const void*) a otra (void*) (puede superponer)
+·ft_memmove: copia (n) bytes de una región de memoria (const void*) a otra (void*) (NO SUPERPONE)
+·ft_strlcpy: copia (n) caracteres de una región de memoria (const char*) a otra (char*), poniendo /0 al ultimo espacio posible. Return == tamaño de la cadena de origen, o 0 si ha dado error
 ft_strlcat: exactamente igual a strlcpy, pero cambia el return: Return == (lendst + lensrc) si escribe completamente src, o Return == (n + lensrc) si no escribe completamente src (src se suma siempre)
 ft_strnstr: busca subcadena dentro de otra cadena (solo considerando (len) caracteres de la cadena principal). Return == 0 si no encuentra subcadena, Return == puntero desde la primera posicion de la subcadena
-ft_strchr: busca el primer (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
-ft_strrchr: busca el ultimo (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
-ft_memchr: busca el primer (int c), del (const void*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+·ft_strchr: busca el primer (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+·ft_strrchr: busca el ultimo (int c), del (const char*). Return == puntero desde esa posición, o Return == 0 si no lo encuentra
+·ft_memchr: busca el primer (int c), del (const void*), durante n caracteres. Return == puntero desde esa posición, o Return == 0 si no lo encuentra
 ft_strncmp: compara n caracteres de dos (const char*) (si no antes encuentra una diferencia de caracter) (n < num max de cadena pequeña, o error)
 -->Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2
 ft_memcmp: compara caracteres de dos (const void*) hasta encontrar /0 o una diferencia. Return == 0 si son iguales, Return > 0 si letra diferente str1 > str2, Return < 0 si letra diferente str1 < str2

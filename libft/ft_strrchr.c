@@ -10,3 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
+{
+    char *ptr;
+    size_t slen;
+    size_t i;
+
+    ptr = (char*)s;
+    slen = strlen(s);
+    i = 0;
+    while (slen--)
+    {
+        if (s[slen] == c)
+        {
+            while (++i < slen)
+                ptr++;
+            return (ptr);
+        }
+    }
+    return (0);
+}
